@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}"> 
+    <title>Tela de Login</title>
+    </head>
+<body>
+    <div class="container">
+        <h2 id="form-title">Login</h2>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+
+        <div class="error">
+            {{ messages[0] }}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('login') }}" method="POST">
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" name="username" placeholder="Digite seu usuário" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+            </div>
+            <button type="submit">Entrar</button>
+        </form>
+        <div class="forgot-password">
+            <a href="#">Esqueceu sua senha?</a>
+        </div>
+        <div class="switch-form">
+            <a href="#" onclick="switchForm('cadastro')">Criar uma conta</a>
+        </div>
+        <div class="switch-form">
+            <a href="#" onclick="switchForm('login')">Já possui uma conta?</a>
+        </div>
+    </div>
